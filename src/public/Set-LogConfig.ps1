@@ -17,5 +17,5 @@ function Set-LogConfig {
         [string]$Config
     )
     $Config = Resolve-Path $Config
-    [NLog.LogManager]::Configuration =  New-Object NLog.Config.XmlLoggingConfiguration $Config, $True
+    [NLog.LogManager]::Configuration = New-Object NLog.Config.XmlLoggingConfiguration $Config, $False
 }

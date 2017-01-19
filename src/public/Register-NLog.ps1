@@ -4,7 +4,7 @@
         Register the NLog dlls and create a file logging target.        
     .DESCRIPTION
         Register the NLog dlls and create a file logging target.
-    .PARAMETER FileName
+    .PARAMETER Logfile
         File to start logging to
     .PARAMETER Config
         NLog Config File Path. The path must exist.
@@ -21,7 +21,8 @@
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ParameterSetName = 'logfile')]
-        [string]$FileName,
+        [Alias('FileName')]
+        [string]$Logfile,
         [Parameter(Mandatory = $True, ParameterSetName = 'config')]
         [ValidateScript({Test-Path $_})]
         [string]$Config,
@@ -37,7 +38,7 @@
             $debugLog.archiveEvery         = "Month"
             $debugLog.ArchiveNumbering     = "Rolling"    
             $debugLog.CreateDirs           = $True      
-            $debugLog.FileName             = $FileName
+            $debugLog.FileName             = $Logfile
             $debugLog.Encoding             = [System.Text.Encoding]::GetEncoding("iso-8859-2")
             $debugLog.KeepFileOpen         = $False
             $debugLog.Layout               = Get-LogMessageLayout -layoutId 1    
@@ -60,6 +61,6 @@
         $Script:Logger = Get-NewLogger -loggerName $LoggerName
     }
     else {
-        Write-Warning 'NlogModule: You must first run Unregister-NLog!'
+        Write-Warning 'NLogModule: You must first run Unregister-NLog!'
     }
 }

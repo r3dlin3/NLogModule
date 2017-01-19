@@ -13,7 +13,7 @@ Register the NLog dlls and create a file logging target.
 
 ### logfile
 ```
-Register-NLog -FileName <String> [-LoggerName <String>]
+Register-NLog -Logfile <String> [-LoggerName <String>]
 ```
 
 ### config
@@ -38,13 +38,13 @@ Register-NLog -Config C:\temp\nlog.config
 
 ## PARAMETERS
 
-### -FileName
+### -Logfile
 File to start logging to
 
 ```yaml
 Type: String
 Parameter Sets: logfile
-Aliases: 
+Aliases: FileName
 
 Required: True
 Position: Named

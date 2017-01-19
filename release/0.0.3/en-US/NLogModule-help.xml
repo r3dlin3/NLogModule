@@ -217,7 +217,7 @@
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Register-NLog</maml:name>
-<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>FileName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="FileName"><maml:name>Logfile</maml:name>
 <maml:Description><maml:para>File to start logging to
 </maml:para>
 </maml:Description>
@@ -257,7 +257,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>FileName</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="FileName"><maml:name>Logfile</maml:name>
 <maml:Description><maml:para>File to start logging to
 </maml:para>
 </maml:Description>

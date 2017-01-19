@@ -1,4 +1,5 @@
-Remove-Module NLogModule
+if ( (Get-Module NLogModule)) { Remove-Module NLogModule }
+
 Import-Module ..\NLogModule.psm1 -Verbose:$false -Force
 
 #$script:VerbosePreference = 'Continue' 

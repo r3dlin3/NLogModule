@@ -275,7 +275,8 @@ function Register-NLog {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True, ParameterSetName = 'logfile')]
-        [string]$FileName,
+        [Alias('FileName')]
+        [string]$Logfile,
         [Parameter(Mandatory = $True, ParameterSetName = 'config')]
         [ValidateScript({Test-Path $_})]
         [string]$Config,
@@ -291,7 +292,7 @@ function Register-NLog {
             $debugLog.archiveEvery         = "Month"
             $debugLog.ArchiveNumbering     = "Rolling"    
             $debugLog.CreateDirs           = $True      
-            $debugLog.FileName             = $FileName
+            $debugLog.FileName             = $Logfile
             $debugLog.Encoding             = [System.Text.Encoding]::GetEncoding("iso-8859-2")
             $debugLog.KeepFileOpen         = $False
             $debugLog.Layout               = Get-LogMessageLayout -layoutId 1    
@@ -314,7 +315,7 @@ function Register-NLog {
         $Script:Logger = Get-NewLogger -loggerName $LoggerName
     }
     else {
-        Write-Warning 'NlogModule: You must first run Unregister-NLog!'
+        Write-Warning 'NLogModule: You must first run Unregister-NLog!'
     }
 }
 
@@ -330,7 +331,8 @@ function Set-LogConfig {
         [ValidateScript({Test-Path $_})]
         [string]$Config
     )
-    [NLog.LogManager]::Configuration =  New-Object NLog.Config.XmlLoggingConfiguration $Config, $True
+    $Config = Resolve-Path $Config
+    [NLog.LogManager]::Configuration = New-Object NLog.Config.XmlLoggingConfiguration $Config, $False
 }
 
 
@@ -751,19 +753,17 @@ Function Write-Warning {
 
 ## Post-Load Module code ##
 
+
 function Get-ScriptDirectory
 {
     $Invocation = (Get-Variable MyInvocation -Scope 1).Value;
-    if($Invocation.PSScriptRoot)
-    {
-        $Invocation.PSScriptRoot;
-    }
-    Elseif($Invocation.MyCommand.Path)
-    {
+    if($Invocation.PSScriptRoot) {
+        $Invocation.PSScriptRoot
+    } elseif ($Invocation.MyCommand.Path) {
         Split-Path $Invocation.MyCommand.Path
-    }
-    else
-    {
+    } elseif ($PSScriptRoot) {
+        $PSScriptRoot
+    } else {
         $Invocation.InvocationName.Substring(0,$Invocation.InvocationName.LastIndexOf("\"));
     }
 }
