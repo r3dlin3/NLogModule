@@ -1,34 +1,35 @@
 ---
 external help file: NLogModule-help.xml
-online version: 
+online version: https://github.com/nlog/NLog/wiki/Configuration-file
 schema: 2.0.0
 ---
 
-# Get-NewLogTarget
+# Set-LogConfig
 
 ## SYNOPSIS
-Creates a new logging target
+Sets the configuration of NLog based on a config file
 
 ## SYNTAX
 
 ```
-Get-NewLogTarget [-TargetType] <String>
+Set-LogConfig [-Config] <String>
 ```
 
 ## DESCRIPTION
-Logging targets are required to write down the log messages somewhere
+NLog config file can be customized based at will
 
 ## EXAMPLES
 
 ### -------------------------- EXEMPLE 1 --------------------------
 ```
-$myFilelogtarget = Get-NewLogTarget -targetType "file"
+Set-LogConfig -Config ./nlog.config
 ```
 
 ## PARAMETERS
 
-### -TargetType
-Type of target to return, Console, file, or mail are supported.
+### -Config
+NLog Config File Path.
+The path must exist.
 
 ```yaml
 Type: String
@@ -49,4 +50,6 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
+
+[https://github.com/nlog/NLog/wiki/Configuration-file](https://github.com/nlog/NLog/wiki/Configuration-file)
 
