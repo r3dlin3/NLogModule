@@ -16,5 +16,6 @@ function Set-LogConfig {
         [ValidateScript({Test-Path $_})]
         [string]$Config
     )
+    $Config = Resolve-Path $Config
     [NLog.LogManager]::Configuration =  New-Object NLog.Config.XmlLoggingConfiguration $Config, $True
 }
