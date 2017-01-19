@@ -12,7 +12,7 @@
 RootModule = 'NLogModule.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.2'
+ModuleVersion = '0.0.3'
 
 # ID used to uniquely identify this module
 GUID = 'c3fc6e2e-b0ad-42ec-9895-cd49764ca305'
