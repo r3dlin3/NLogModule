@@ -1,4 +1,4 @@
-﻿function UnRegister-NLog {
+﻿function Unregister-NLog {
         <#
     .SYNOPSIS
         UnRegister the NLog Target..
