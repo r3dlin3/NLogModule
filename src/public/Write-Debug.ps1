@@ -87,7 +87,7 @@
      end
      {
         if ($script:Logger -ne $null) {
-            $script:Logger.Trace($Message)
+            $script:Logger.Debug($Message)
         }
          try {
              $steppablePipeline.End()

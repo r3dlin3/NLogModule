@@ -70,7 +70,7 @@
      end
      {
         if ($script:Logger -ne $null) {
-            $script:Logger.Info("$Message")
+            $script:Logger.Trace("$Message")
         }
          try {
              $steppablePipeline.End()
