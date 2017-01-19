@@ -1,12 +1,10 @@
-Remove-Module Test1
 Remove-Module NLogModule
-
-Import-Module ..\NLogModule.psm1 -Verbose:$false
+Import-Module ..\NLogModule.psm1 -Verbose:$false -Force
 
 #$script:VerbosePreference = 'Continue' 
 $script:DebugPreference = 'Continue'
 
-Register-NLog -FileName "test.log"
+Register-NLog -Config .\nlog.config
 
 Write-Host "Write-Host test." 
 "Out-Default test." 
