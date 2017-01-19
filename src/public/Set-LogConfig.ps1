@@ -6,7 +6,9 @@ function Set-LogConfig {
         NLog config file can be customized based at will
     .EXAMPLE
         Set-LogConfig -Config ./nlog.config
-    .SEE
+    .PARAMETER Config
+        NLog Config File Path. The path must exist.
+    .LINK
         https://github.com/nlog/NLog/wiki/Configuration-file
     #>
     param(

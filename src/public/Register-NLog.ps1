@@ -15,7 +15,7 @@
         Register-NLog -FileName C:\temp\testlogger.log
     .EXAMPLE 
         Register-NLog -Config C:\temp\nlog.config
-    .SEE
+    .LINK 
         https://github.com/nlog/NLog/wiki/Configuration-file
     #>
     [CmdletBinding()]
@@ -60,6 +60,6 @@
         $Script:Logger = Get-NewLogger -loggerName $LoggerName
     }
     else {
-        Write-Warning 'NlogModule: You must first run UnRegister-NLog!'
+        Write-Warning 'NlogModule: You must first run Unregister-NLog!'
     }
 }
