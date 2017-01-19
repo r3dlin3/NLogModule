@@ -25,7 +25,7 @@ The nlog.dll was built for .net 3.5. The exported functions can be used as is fo
 
 **Website:** www.the-little-things.net
 
-**Github:** https://github.com/zloeber/Powershells
+**Github:** https://github.com/zloeber/Powershell
 
 ##Other credits:
 [https://github.com/NLog/NLog](https://github.com/NLog/NLog)
