@@ -13,10 +13,12 @@
     #>
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $True)]
+        [Parameter(Mandatory = $True, ParameterSetName = 'logfile')]
         [string]$FileName,
+        [Parameter(Mandatory = $True, ParameterSetName = 'config')]
+        [string]$Config,
         [Parameter()]
-        [string]$LoggerName = 'TestLogger'
+        [string]$LoggerName = (Get-Item $MyInvocation.PSCommandPath).BaseName
         
     )
     if ($Script:Logger -eq $null) {
@@ -33,7 +35,7 @@
         
         $Script:NLogConfig.AddTarget("file", $debugLog)
         
-        $rule1 = New-Object NLog.Config.LoggingRule("*", [NLog.LogLevel]::Debug, $debugLog)
+        $rule1 = New-Object NLog.Config.LoggingRule("*", [NLog.LogLevel]::Trace, $debugLog)
         $Script:NLogConfig.LoggingRules.Add($rule1)
 
         # Assign configured Log config to LogManager
